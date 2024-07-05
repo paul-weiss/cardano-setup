@@ -10,8 +10,8 @@ mkdir mainnet/config
 
 # download cardano binaries
 cd cardano
-wget https://github.com/IntersectMBO/cardano-node/releases/download/8.9.3/cardano-node-8.9.3-linux.tar.gz
-tar -xvf cardano-node-8.9.3-linux.tar.gz
+wget https://github.com/IntersectMBO/cardano-node/releases/download/8.9.4/cardano-node-8.9.4-linux.tar.gz
+tar -xvf cardano-node-8.9.4-linux.tar.gz
 
 # setup path vars
 echo "export PATH=$(pwd)/bin:$PATH" >> ~/.bashrc
