@@ -94,8 +94,12 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOF
 
-sudo systemctl daemon-reload && \
-sudo systemctl enable cardano-db-sync.service && \
+sudo systemctl daemon-reload
+sudo systemctl enable cardano-db-sync.service
 sudo systemctl start cardano-db-sync.service
+
+echo "Observe Cardano db-sync logs:"
+echo "journalctl -fu cardano-db-sync.service"
+
 
 
