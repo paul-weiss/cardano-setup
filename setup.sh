@@ -1,8 +1,12 @@
 #!/bin/bash
+#====================================================================================================================================
+# CARDANO SPO Setup for mainnet
+#====================================================================================================================================
 
 # vars
 export CARDANO_VERSION="9.0.0"
 export DB_SYNC_VERSION="13.3.0.0"
+export OGMIOS_VERSION="6.5.0"
 export DB_PASSWORD="changeme123!" # you should change this prior to running, todo: prompt for pwd
 
 # setup dir structure
@@ -10,8 +14,13 @@ cd ~
 mkdir cardano
 mkdir mainnet
 mkdir mainnet/config
+mkdir cardano-db-sync
+mkdir kupo
+mkdir ogmios
 
-# download cardano binaries
+#====================================================================================================================================
+# CARDANO NODE
+#====================================================================================================================================
 cd cardano
 wget https://github.com/IntersectMBO/cardano-node/releases/download/$CARDANO_VERSION/cardano-node-$CARDANO_VERSION-linux.tar.gz
 tar -xvf cardano-node-$CARDANO_VERSION-linux.tar.gz
@@ -37,8 +46,10 @@ sudo systemctl daemon-reload
 sudo systemctl enable cardano-node.service
 sudo systemctl start cardano-node.service
 
+#====================================================================================================================================
+# CARDANO DB-SYNC
+#====================================================================================================================================
 cd ~
-mkdir cardano-db-sync
 cd cardano-db-sync
 wget https://github.com/IntersectMBO/cardano-db-sync/releases/download/$DB_SYNC_VERSION/cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 tar -xvf cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
@@ -49,18 +60,41 @@ sudo systemctl daemon-reload
 sudo systemctl enable cardano-db-sync.service
 sudo systemctl start cardano-db-sync.service
 
+#====================================================================================================================================
+# POSTGRESQL
+#====================================================================================================================================
 # postgresql
 sudo apt install postgresql postgresql-contrib
 sudo systemctl start postgresql.service
 # Enter shell as default postgres user:
-sudo -i -u postgres 
-psql
-CREATE USER ubuntu WITH PASSWORD '$DB_PASSWORD';
-ALTER ROLE ubuntu WITH SUPERUSER;
-ALTER ROLE ubuntu WITH CREATEDB;
-CREATE DATABASE cexplorer;
-exit
-exit
+sudo -u postgres psql -U postgres -f ~/cardano-setup/db/setup.sql
 
+#====================================================================================================================================
+# OGMIOS
+#====================================================================================================================================
+cd ~
+cd ogmios
+wget https://github.com/CardanoSolutions/ogmios/releases/download/v$OGMIOS_VERSION/ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
+tar -xvf ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 
+# Register cardano-db-sync as a service
+sudo cp ~/cardano-setup/ogmios.service /etc/systemd/system/ogmios.service
+sudo systemctl daemon-reload
+sudo systemctl enable ogmios.service
+sudo systemctl start ogmios.service
+
+#====================================================================================================================================
+# KUPO
+#====================================================================================================================================
+cd ~
+cd kupo
+# version not easily put into var :(
+wget https://github.com/CardanoSolutions/kupo/releases/download/v2.8/kupo-2.8.0-amd64-Linux.tar.gz
+tar -xvf kupo-2.8.0-amd64-Linux.tar.gz
+
+# Register cardano-db-sync as a service
+sudo cp ~/cardano-setup/kupo.service /etc/systemd/system/kupo.service
+sudo systemctl daemon-reload
+sudo systemctl enable kupo.service
+sudo systemctl start kupo.service
 
