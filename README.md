@@ -1,7 +1,7 @@
 # Cardano Helper Scripts
 
-### Download Cardano
-* `wget https://raw.githubusercontent.com/paul-weiss/cardano-setup/main/setup.sh`
+### Download repo
+* `cd cardano-setup`
 * `chmod +x setup.sh`
 * `./setup.sh`
 
