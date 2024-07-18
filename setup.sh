@@ -6,6 +6,7 @@ export DB_SYNC_VERSION="13.3.0.0"
 export DB_PASSWORD="changeme123!" # you should change this prior to running, todo: prompt for pwd
 
 # setup dir structure
+cd ~
 mkdir cardano
 mkdir mainnet
 mkdir mainnet/config
@@ -31,41 +32,24 @@ wget https://book.play.dev.cardano.org/environments/mainnet/alonzo-genesis.json
 wget https://book.world.dev.cardano.org/environments/mainnet/conway-genesis.json
 
 # Register cardano-node as a service
-sudo tee /etc/systemd/system/cardano-node.service > /dev/null <<EOF
-[Unit]
-Description=Cardano Node
-After=network.target
-
-[Service]
-User=ubuntu
-Type=simple
-WorkingDirectory=/home/ubuntu/mainnet
-ExecStart=/usr/local/bin/cardano-node run \
---topology /home/ubuntu/mainnet/configs/topology.json \
---database-path /home/ubuntu/mainnet/db \
---socket-path /home/ubuntu/mainnet/node.socket \
---port 3434 \
---config /home/ubuntu/mainnet/configs/config.json
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-EOF
+sudo cp ~/cardano-setup/cardano-node.service /etc/systemd/system/cardano-node.service
 sudo systemctl daemon-reload
 sudo systemctl enable cardano-node.service
 sudo systemctl start cardano-node.service
 
-echo "Observe Cardano Node logs:"
-echo "journalctl-fu cardano-node.service"
-
 cd ~
-git clone https://github.com/IntersectMBO/cardano-db-sync
+mkdir cardano-db-sync
 cd cardano-db-sync
-git checkout $DB_SYNC_VERSION
-
 wget https://github.com/IntersectMBO/cardano-db-sync/releases/download/$DB_SYNC_VERSION/cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 tar -xvf cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 
+# Register cardano-db-sync as a service
+sudo cp ~/cardano-setup/cardano-db-sync.service /etc/systemd/system/cardano-db-sync.service
+sudo systemctl daemon-reload
+sudo systemctl enable cardano-db-sync.service
+sudo systemctl start cardano-db-sync.service
+
+# postgresql
 sudo apt install postgresql postgresql-contrib
 sudo systemctl start postgresql.service
 # Enter shell as default postgres user:
@@ -77,29 +61,6 @@ ALTER ROLE ubuntu WITH CREATEDB;
 CREATE DATABASE cexplorer;
 exit
 exit
-
-# setup db-sync as a service
-sudo tee /etc/systemd/system/cardano-db-sync.service > /dev/null <<EOF
-[Unit]
-Description=Cardano DB Sync Service
-After=network.target
-
-[Service]
-Environment=PGPASSFILE=/home/ubuntu/cardano-db-sync/config/pgpass-mainnet
-ExecStart=/usr/local/bin/cardano-db-sync --config /home/ubuntu/mainnet/configs/db-sync-config.json --socket-path /home/ubuntu/mainnet/node.socket --state-dir /home/ubuntu/mainnet/db-sync/ledger-state --schema-dir /home/ubuntu/cardano-db-sync/schema/
-User=ubuntu
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable cardano-db-sync.service
-sudo systemctl start cardano-db-sync.service
-
-echo "Observe Cardano db-sync logs:"
-echo "journalctl -fu cardano-db-sync.service"
 
 
 
