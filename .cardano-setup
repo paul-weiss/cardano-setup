@@ -1,2 +1,2 @@
-export PATH=~/cardano/bin:~/cardano-db-sync:$PATH
-export CARDANO_NODE_SOCKET_PATH=~/$CARDANO_ENV/node.socket
+alias tip-preview='~/cardano/bin/cardano-cli query tip --socket-path ~/preview/node.socket --testnet-magic 2'
+alias tip='~/cardano/bin/cardano-cli query tip --socket-path ~/mainnet/node.socket --mainnet'
