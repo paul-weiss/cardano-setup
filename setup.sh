@@ -9,6 +9,9 @@ export DB_SYNC_VERSION="13.3.0.0"
 export OGMIOS_VERSION="6.5.0"
 export DB_PASSWORD="changeme123!" # you should change this prior to running, todo: prompt for pwd
 
+# prerequisites
+sudo apt-get install unzip
+
 # setup dir structure
 cd ~
 mkdir cardano
