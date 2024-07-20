@@ -29,22 +29,19 @@ mkdir ogmios
 cd cardano
 wget https://github.com/IntersectMBO/cardano-node/releases/download/$CARDANO_VERSION/cardano-node-$CARDANO_VERSION-linux.tar.gz
 tar -xvf cardano-node-$CARDANO_VERSION-linux.tar.gz
+rm cardano-node-$CARDANO_VERSION-linux.tar.gz
 
-# setup path vars
-echo "export PATH=$(pwd)/bin:$PATH" >> ~/.bashrc
-echo "export CARDANO_NODE_SOCKET_PATH=$(pwd)/mainnet/node.socket" >> ~/.bashrc
-
-# download mainnet configs
-cd ../preview/config
-wget https://book.world.dev.cardano.org/environments/preview/config.json
-wget https://book.world.dev.cardano.org/environments/preview/config-bp.json
-wget https://book.world.dev.cardano.org/environments/preview/db-sync-config.json
-wget https://book.world.dev.cardano.org/environments/preview/submit-api-config.json
-wget https://book.world.dev.cardano.org/environments/preview/topology.json
-wget https://book.world.dev.cardano.org/environments/preview/byron-genesis.json
-wget https://book.world.dev.cardano.org/environments/preview/shelley-genesis.json
-wget https://book.world.dev.cardano.org/environments/preview/alonzo-genesis.json
-wget https://book.world.dev.cardano.org/environments/preview/conway-genesis.json
+# download preview configs
+cd ../$CARDANO_ENV/config
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/config.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/config-bp.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/db-sync-config.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/submit-api-config.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/topology.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/byron-genesis.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/shelley-genesis.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/alonzo-genesis.json
+wget https://book.world.dev.cardano.org/environments/$CARDANO_ENV/conway-genesis.json
 
 # Register cardano-node as a service
 sudo cp ~/cardano-setup/svc/cardano-node.preview.service /etc/systemd/system/cardano-node.service
@@ -59,6 +56,7 @@ cd ~
 cd cardano-db-sync
 wget https://github.com/IntersectMBO/cardano-db-sync/releases/download/$DB_SYNC_VERSION/cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 tar -xvf cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
+rm cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 
 # Register cardano-db-sync as a service
 sudo cp ~/cardano-setup/svc/cardano-db-sync.preview.service /etc/systemd/system/cardano-db-sync.service
@@ -82,6 +80,8 @@ cd ~
 cd ogmios
 wget https://github.com/CardanoSolutions/ogmios/releases/download/v$OGMIOS_VERSION/ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 unzip ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
+rm ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
+
 
 # Register cardano-db-sync as a service
 sudo cp ~/cardano-setup/svc/ogmios.preview.service /etc/systemd/system/ogmios.service
@@ -97,6 +97,7 @@ cd kupo
 # version not easily put into var :(
 wget https://github.com/CardanoSolutions/kupo/releases/download/v2.8/kupo-2.8.0-amd64-Linux.tar.gz
 tar -xvf kupo-2.8.0-amd64-Linux.tar.gz
+rm kupo-2.8.0-amd64-Linux.tar.gz
 
 # Register ogmios as a service
 sudo cp ~/cardano-setup/svc/kupo.preview.service /etc/systemd/system/kupo.service
