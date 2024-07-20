@@ -3,7 +3,7 @@ Description=Cardano DB Sync Service
 After=network.target
 
 [Service]
-Environment=PGPASSFILE=/home/ubuntu/cardano-db-sync/config/pgpass-mainnet
+Environment=PGPASSFILE=/home/ubuntu/cardano-setup/cfg/pgpass
 ExecStart=/home/ubuntu/cardano-db-sync/cardano-db-sync \
   --config /home/ubuntu/mainnet/config/db-sync-config.json \
   --socket-path /home/ubuntu/mainnet/node.socket \
