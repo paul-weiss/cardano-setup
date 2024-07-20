@@ -20,9 +20,15 @@ cd cardano-setup
 chmod +x *.sh
 ```
 
-### Determine environment
-* `mainnet` use `setup.sh`
-* `preview` use `setup-preview.sh`
+### `mainnet` setup
+```
+./setup.sh
+```
+
+### `preview` setup
+```
+./setup-preview.sh
+```
 
 ### Verify services are running
 * `journalctl -fu cardano-node.service`
