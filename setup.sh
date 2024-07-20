@@ -41,7 +41,7 @@ wget https://book.play.dev.cardano.org/environments/mainnet/alonzo-genesis.json
 wget https://book.world.dev.cardano.org/environments/mainnet/conway-genesis.json
 
 # Register cardano-node as a service
-sudo cp ~/cardano-setup/cardano-node.service /etc/systemd/system/cardano-node.service
+sudo cp ~/cardano-setup/svc/cardano-node.service /etc/systemd/system/cardano-node.service
 sudo systemctl daemon-reload
 sudo systemctl enable cardano-node.service
 sudo systemctl start cardano-node.service
@@ -55,7 +55,7 @@ wget https://github.com/IntersectMBO/cardano-db-sync/releases/download/$DB_SYNC_
 tar -xvf cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 
 # Register cardano-db-sync as a service
-sudo cp ~/cardano-setup/cardano-db-sync.service /etc/systemd/system/cardano-db-sync.service
+sudo cp ~/cardano-setup/svc/cardano-db-sync.service /etc/systemd/system/cardano-db-sync.service
 sudo systemctl daemon-reload
 sudo systemctl enable cardano-db-sync.service
 sudo systemctl start cardano-db-sync.service
@@ -78,7 +78,7 @@ wget https://github.com/CardanoSolutions/ogmios/releases/download/v$OGMIOS_VERSI
 tar -xvf ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 
 # Register cardano-db-sync as a service
-sudo cp ~/cardano-setup/ogmios.service /etc/systemd/system/ogmios.service
+sudo cp ~/cardano-setup/svc/ogmios.service /etc/systemd/system/ogmios.service
 sudo systemctl daemon-reload
 sudo systemctl enable ogmios.service
 sudo systemctl start ogmios.service
