@@ -1,15 +1,17 @@
-# Cardano Setup for `mainnet`
+# Cardano Setup
 
 ### Assumptions
 * running as user ubuntu on linux machine
 * minimum hardware requirements met ([link](https://developers.cardano.org/docs/operate-a-stake-pool/hardware-requirements/))
-* you want to connect to `mainnet`
 
 ### Download repo
 * `git clone https://github.com/paul-weiss/cardano-setup.git`
 * `cd cardano-setup`
-* `chmod +x setup.sh`
-* `./setup.sh`
+* `chmod +x *.sh`
+
+### Determine environment
+* `mainnet` use `setup.sh`
+* `preview` use `setup-preview.sh`
 
 ### Verify services are running
 * `journalctl -fu cardano-node.service`
