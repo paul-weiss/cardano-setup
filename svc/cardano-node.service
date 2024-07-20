@@ -6,7 +6,12 @@ After=network.target
 User=ubuntu
 Type=simple
 WorkingDirectory=/home/ubuntu/mainnet
-ExecStart=/home/ubuntu/cardano/bin/cardano-node run --topology /home/ubuntu/mainnet/configs/topology.json --database-path /home/ubuntu/mainnet/db --socket-path /home/ubuntu/mainnet/node.socket --port 3434 --config /home/ubuntu/mainnet/configs/config.json
+ExecStart=/home/ubuntu/cardano/bin/cardano-node run \
+  --topology /home/ubuntu/mainnet/configs/topology.json \
+  --database-path /home/ubuntu/mainnet/db \
+  --socket-path /home/ubuntu/mainnet/node.socket \
+  --port 3434 \
+  --config /home/ubuntu/mainnet/configs/config.json
 Restart=on-failure
 
 [Install]
