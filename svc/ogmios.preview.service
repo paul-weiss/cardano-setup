@@ -1,0 +1,15 @@
+[Unit]
+Description=Ogmios Service
+After=network.target
+
+[Service]
+User=ubuntu
+Type=simple
+ExecStart=/usr/local/bin/ogmios \
+  --host=0.0.0.0 \
+  --node-config=/home/ubuntu/preview/configs/config.json \
+  --node-socket=/home/ubuntu/preview/node.socket
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
