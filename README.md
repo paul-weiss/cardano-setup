@@ -1,4 +1,4 @@
-# Cardano Helper Scripts
+# Cardano Setup for `mainnet`
 
 ### Assumptions
 * running as user ubuntu on linux machine
