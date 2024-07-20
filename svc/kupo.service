@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=ubuntu
 Type=simple
-ExecStart=/usr/local/bin/kupo \
+ExecStart=/home/ubuntu/kupo/bin/kupo \
   --node-socket /home/ubuntu/mainnet/node.socket \
   --node-config /home/ubuntu/mainnet/configs/config.json \
   --since origin \
