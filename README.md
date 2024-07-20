@@ -12,4 +12,7 @@
 * `./setup.sh`
 
 ### Verify services are running
-* 
+* `journalctl -fu cardano-node.service`
+* `journalctl -fu cardano-db-sync.service`
+* `journalctl -fu ogmios.service`
+* `journalctl -fu kupo.service`
