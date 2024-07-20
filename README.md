@@ -35,3 +35,9 @@ chmod +x *.sh
 * `journalctl -fu cardano-db-sync.service`
 * `journalctl -fu ogmios.service`
 * `journalctl -fu kupo.service`
+
+### Dependencies
+* [cardano-node](https://github.com/IntersectMBO/cardano-node)
+* [cardano-db-sync](https://github.com/IntersectMBO/cardano-db-sync)
+* [kupo](https://github.com/CardanoSolutions/kupo)
+* [ogmios](https://github.com/cardanosolutions/ogmios)
