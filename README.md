@@ -13,10 +13,12 @@ if [ -f ~/cardano-setup/.cardano-setup ]; then
 fi
 ```
 
-### Download repo
-* `git clone https://github.com/paul-weiss/cardano-setup.git`
-* `cd cardano-setup`
-* `chmod +x *.sh`
+### Download repo & set execute permissions
+```
+git clone https://github.com/paul-weiss/cardano-setup.git
+cd cardano-setup
+chmod +x *.sh
+```
 
 ### Determine environment
 * `mainnet` use `setup.sh`
