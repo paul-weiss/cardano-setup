@@ -1,0 +1,16 @@
+[Unit]
+Description=Cardano DB Sync Service
+After=network.target
+
+[Service]
+Environment=PGPASSFILE=/home/ubuntu/cardano-db-sync/config/pgpass-preview
+ExecStart=/home/ubuntu/cardano-db-sync/cardano-db-sync \
+  --config /home/ubuntu/preview/config/db-sync-config.json \
+  --socket-path /home/ubuntu/preview/node.socket \
+  --state-dir /home/ubuntu/preview/db-sync/ledger-state \
+  --schema-dir /home/ubuntu/cardano-db-sync/schema/
+User=ubuntu
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
