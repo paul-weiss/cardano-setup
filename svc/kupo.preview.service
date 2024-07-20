@@ -1,0 +1,18 @@
+[Unit]
+Description=Kupo Service
+After=network.target
+
+[Service]
+User=ubuntu
+Type=simple
+ExecStart=/home/ubuntu/kupo/bin/kupo \
+  --node-socket /home/ubuntu/preview/node.socket \
+  --node-config /home/ubuntu/preview/configs/config.json \
+  --since origin \
+  --defer-db-indexes \
+  --match "*" \
+  --workdir /home/ubuntu/kupo
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
