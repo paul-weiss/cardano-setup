@@ -1,3 +1,5 @@
+ <img src="https://cardano.org/img/cardano-logo-blue.svg" width="400" height="100">
+
 # Cardano Setup
 
 ### Assumptions
