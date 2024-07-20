@@ -36,13 +36,13 @@ echo "export CARDANO_NODE_SOCKET_PATH=$(pwd)/mainnet/node.socket" >> ~/.bashrc
 cd ../mainnet/config
 wget https://book.world.dev.cardano.org/environments/mainnet/config.json
 wget https://book.world.dev.cardano.org/environments/mainnet/config-bp.json
-wget https://book.play.dev.cardano.org/environments/mainnet/db-sync-config.json
-wget https://book.play.dev.cardano.org/environments/mainnet/submit-api-config.json
-wget https://book.play.dev.cardano.org/environments/mainnet/topology.json
-wget https://book.play.dev.cardano.org/environments/mainnet/byron-genesis.json
-wget https://book.play.dev.cardano.org/environments/mainnet/shelley-genesis.json
-wget https://book.play.dev.cardano.org/environments/mainnet/alonzo-genesis.json
-wget https://book.play.dev.cardano.org/environments/mainnet/conway-genesis.json
+wget https://book.world.dev.cardano.org/environments/mainnet/db-sync-config.json
+wget https://book.world.dev.cardano.org/environments/mainnet/submit-api-config.json
+wget https://book.world.dev.cardano.org/environments/mainnet/topology.json
+wget https://book.world.dev.cardano.org/environments/mainnet/byron-genesis.json
+wget https://book.world.dev.cardano.org/environments/mainnet/shelley-genesis.json
+wget https://book.world.dev.cardano.org/environments/mainnet/alonzo-genesis.json
+wget https://book.world.dev.cardano.org/environments/mainnet/conway-genesis.json
 
 # Register cardano-node as a service
 sudo cp ~/cardano-setup/svc/cardano-node.service /etc/systemd/system/cardano-node.service
