@@ -1,0 +1,18 @@
+[Unit]
+Description=Cardano Node
+After=network.target
+
+[Service]
+User=ubuntu
+Type=simple
+WorkingDirectory=/home/ubuntu/preview
+ExecStart=/home/ubuntu/cardano/bin/cardano-node run \
+  --topology /home/ubuntu/preview/config/topology.json \
+  --database-path /home/ubuntu/preview/db \
+  --socket-path /home/ubuntu/preview/node.socket \
+  --port 3434 \
+  --config /home/ubuntu/preview/config/config.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
