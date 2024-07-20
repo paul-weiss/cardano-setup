@@ -1,0 +1,2 @@
+export PATH=~/cardano/bin:~/cardano-db-sync:$PATH
+export CARDANO_NODE_SOCKET_PATH=~/$CARDANO_ENV/node.socket
