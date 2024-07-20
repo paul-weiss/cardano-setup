@@ -4,7 +4,11 @@ After=network.target
 
 [Service]
 Environment=PGPASSFILE=/home/ubuntu/cardano-db-sync/config/pgpass-mainnet
-ExecStart=/usr/local/bin/cardano-db-sync --config /home/ubuntu/mainnet/configs/db-sync-config.json --socket-path /home/ubuntu/mainnet/node.socket --state-dir /home/ubuntu/mainnet/db-sync/ledger-state --schema-dir /home/ubuntu/cardano-db-sync/schema/
+ExecStart=/home/ubuntu/cardano-db-sync/cardano-db-sync \
+  --config /home/ubuntu/mainnet/configs/db-sync-config.json \
+  --socket-path /home/ubuntu/mainnet/node.socket \
+  --state-dir /home/ubuntu/mainnet/db-sync/ledger-state \
+  --schema-dir /home/ubuntu/cardano-db-sync/schema/
 User=ubuntu
 Restart=on-failure
 
