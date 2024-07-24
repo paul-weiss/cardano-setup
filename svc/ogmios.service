@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=ubuntu
 Type=simple
-ExecStart=/usr/local/bin/ogmios \
+ExecStart=/home/ubuntu/ogmios/bin/ogmios \
   --host=0.0.0.0 \
   --node-config=/home/ubuntu/mainnet/configs/config.json \
   --node-socket=/home/ubuntu/mainnet/node.socket
