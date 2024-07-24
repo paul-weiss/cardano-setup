@@ -8,7 +8,10 @@
 install_cardano_node() {
     cd ~
     rm -Rf cardano
+    rm -Rf $1
     mkdir cardano
+    mkdir $1
+    mkdir $1/config
     cd cardano
     wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
     tar -xvf cardano-node-$2-linux.tar.gz
