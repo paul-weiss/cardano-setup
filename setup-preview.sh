@@ -83,7 +83,7 @@ sudo -u postgres psql -U postgres -f ~/cardano-setup/db/setup.sql
 cd ~
 cd ogmios
 wget https://github.com/CardanoSolutions/ogmios/releases/download/v$OGMIOS_VERSION/ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
-unzip ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
+unzip -o ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 rm ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 chmod +x bin/ogmios
 
