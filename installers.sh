@@ -122,9 +122,9 @@ install_kupo() {
     mkdir kupo
     cd kupo
     # version not easily put into var :(
-    wget https://github.com/CardanoSolutions/kupo/releases/download/v$2/kupo-$2.$3-amd64-Linux.tar.gz
-    tar -xvf kupo-$2.$3-amd64-Linux.tar.gz
-    rm kupo-$2.$3-amd64-Linux.tar.gz
+    wget "https://github.com/CardanoSolutions/kupo/releases/download/v$2/kupo-$2.$3-amd64-Linux.tar.gz"
+    tar -xvf "kupo-$2.$3-amd64-Linux.tar.gz"
+    rm "kupo-$2.$3-amd64-Linux.tar.gz"
     chmod +x bin/kupo
     
     # Register ogmios as a service
