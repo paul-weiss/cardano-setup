@@ -19,7 +19,6 @@ cd ~
 mkdir cardano
 mkdir preview
 mkdir preview/config
-mkdir cardano-db-sync
 mkdir kupo
 mkdir ogmios
 
@@ -53,13 +52,18 @@ sudo systemctl start cardano-node.service
 # CARDANO DB-SYNC
 #====================================================================================================================================
 cd ~
-cd cardano-db-sync
+git clone https://github.com/IntersectMBO/cardano-db-sync
+# Checkout the version you will run:
+cd cardano-db-sync &&
+git checkout 13.3.0.0
+mkdir bin
+cd bin
 wget https://github.com/IntersectMBO/cardano-db-sync/releases/download/$DB_SYNC_VERSION/cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 tar -xvf cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 rm cardano-db-sync-$DB_SYNC_VERSION-linux.tar.gz
 
 # Register cardano-db-sync as a service
-sudo cp ~/cardano-setup/svc/cardano-db-sync.preview.service /etc/systemd/system/cardano-db-sync.service
+sudo cp ~/cardano-setup/svc/cardano-db-sync.service /etc/systemd/system/cardano-db-sync.service
 sudo systemctl daemon-reload && \
 sudo systemctl enable cardano-db-sync.service && \
 sudo systemctl start cardano-db-sync.service
