@@ -7,7 +7,7 @@ User=ubuntu
 Type=simple
 ExecStart=/home/ubuntu/ogmios/bin/ogmios \
   --host=0.0.0.0 \
-  --node-config=/home/ubuntu/preview/configs/config.json \
+  --node-config=/home/ubuntu/preview/config/config.json \
   --node-socket=/home/ubuntu/preview/node.socket
 Restart=on-failure
 
