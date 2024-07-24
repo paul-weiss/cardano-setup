@@ -35,6 +35,7 @@ install_cardano_node() {
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/cardano-node.preview.service /etc/systemd/system/cardano-node.service
     fi
+    sudo systemctl stop cardano-node.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable cardano-node.service && \
     sudo systemctl start cardano-node.service
@@ -64,6 +65,7 @@ install_cardano_db_sync() {
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/cardano-db-sync.preview.service /etc/systemd/system/cardano-db-sync.service
     fi
+    sudo systemctl stop cardano-db-sync.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable cardano-db-sync.service && \
     sudo systemctl start cardano-db-sync.service
@@ -100,6 +102,7 @@ install_ogmios() {
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/ogmios.preview.service /etc/systemd/system/ogmios.service
     fi
+    sudo systemctl stop ogmios.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable ogmios.service && \
     sudo systemctl start ogmios.service
@@ -128,6 +131,7 @@ install_kupo() {
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/kupo.preview.service /etc/systemd/system/kupo.service
     fi
+    sudo systemctl stop kupo.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable kupo.service && \
     sudo systemctl start kupo.service
