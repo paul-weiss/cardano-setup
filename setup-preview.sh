@@ -11,7 +11,7 @@ export CARDANO_VERSION="9.0.0"
 export CARDANO_ENV="preview"
 export DB_PASSWORD="preview123!"
 export DB_SYNC_VERSION="13.3.0.0"
-export KUPO_VERSION="2.6"
+export KUPO_VERSION="2.9"
 export KUPO_PATCH_VERSION="0"
 export OGMIOS_VERSION="6.5.0"
 
