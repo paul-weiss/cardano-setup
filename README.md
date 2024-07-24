@@ -13,12 +13,16 @@ if [ -f ~/cardano-setup/.cardano-setup ]; then
 fi
 ```
 
-### Download repo & set execute permissions
+### Download scripts
 ```
 git clone https://github.com/paul-weiss/cardano-setup.git
 cd cardano-setup
 chmod +x *.sh
 ```
+
+### Change postgres password
+
+Change the env var `DB_PASSWORD` in either `setup.sh` and or `setup-preview.sh`:
 
 ### `mainnet` setup
 ```
