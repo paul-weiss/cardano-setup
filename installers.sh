@@ -76,6 +76,8 @@ install_cardano_db_sync() {
 # same db for all environments
 #====================================================================================================================================
 install_postgresql() {
+    sudo systemctl stop postgresql.service
+    sudo apt remove -y postgresql
     sudo apt install postgresql postgresql-contrib
     sudo systemctl start postgresql.service
     sudo -u postgres psql -U postgres -f ~/cardano-setup/db/setup.sql
