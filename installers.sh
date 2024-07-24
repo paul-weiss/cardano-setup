@@ -93,9 +93,9 @@ install_ogmios() {
     rm -Rf ogmios
     mkdir ogmios
     cd ogmios
-    wget https://github.com/CardanoSolutions/ogmios/releases/download/v$2/ogmios-v$2-x86_64-linux.zip
-    unzip ogmios-v$2-x86_64-linux.zip
-    rm ogmios-v$2-x86_64-linux.zip
+    wget "https://github.com/CardanoSolutions/ogmios/releases/download/v$2/ogmios-v$2-x86_64-linux.zip"
+    unzip "ogmios-v$2-x86_64-linux.zip"
+    rm "ogmios-v$2-x86_64-linux.zip"
     chmod +x bin/ogmios
     
     # Register cardano-db-sync as a service
@@ -122,9 +122,9 @@ install_kupo() {
     mkdir kupo
     cd kupo
     # version not easily put into var :(
-    wget "https://github.com/CardanoSolutions/kupo/releases/download/v$2/kupo-$2.$3-amd64-Linux.tar.gz"
-    tar -xvf "kupo-$2.$3-amd64-Linux.tar.gz"
-    rm "kupo-$2.$3-amd64-Linux.tar.gz"
+    wget "https://github.com/CardanoSolutions/kupo/releases/download/v$2/kupo-$2.$3-x86_64-linux.zip"
+    unzip "kupo-$2.$3-x86_64-linux.zip"
+    rm "kupo-$2.$3-x86_64-linux.zip"
     chmod +x bin/kupo
     
     # Register ogmios as a service
