@@ -11,7 +11,7 @@ export CARDANO_VERSION="9.0.0"
 export CARDANO_ENV="mainnet"
 export DB_PASSWORD="mainnet123!" # you should change this prior to running, todo: prompt for pwd
 export DB_SYNC_VERSION="13.3.0.0"
-export KUPO_VERSION="2.6"
+export KUPO_VERSION="2.9"
 export KUPO_PATCH_VERSION="0"
 export OGMIOS_VERSION="6.5.0"
 
