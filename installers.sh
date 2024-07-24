@@ -30,12 +30,12 @@ install_cardano_node() {
     wget https://book.world.dev.cardano.org/environments/$1/conway-genesis.json
     
     # Register cardano-node as a service
+    sudo systemctl stop cardano-node.service
     if [ "$1" = "mainnet" ]; then
         sudo cp ~/cardano-setup/svc/cardano-node.service /etc/systemd/system/cardano-node.service
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/cardano-node.preview.service /etc/systemd/system/cardano-node.service
     fi
-    sudo systemctl stop cardano-node.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable cardano-node.service && \
     sudo systemctl start cardano-node.service
@@ -60,12 +60,12 @@ install_cardano_db_sync() {
     rm cardano-db-sync-$2-linux.tar.gz
     
     # Register cardano-db-sync as a service
+    sudo systemctl stop cardano-db-sync.service
     if [ "$1" = "mainnet" ]; then
         sudo cp ~/cardano-setup/svc/cardano-db-sync.service /etc/systemd/system/cardano-db-sync.service
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/cardano-db-sync.preview.service /etc/systemd/system/cardano-db-sync.service
     fi
-    sudo systemctl stop cardano-db-sync.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable cardano-db-sync.service && \
     sudo systemctl start cardano-db-sync.service
@@ -99,12 +99,12 @@ install_ogmios() {
     chmod +x bin/ogmios
     
     # Register cardano-db-sync as a service
+    sudo systemctl stop ogmios.service
     if [ "$1" = "mainnet" ]; then
         sudo cp ~/cardano-setup/svc/ogmios.service /etc/systemd/system/ogmios.service
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/ogmios.preview.service /etc/systemd/system/ogmios.service
     fi
-    sudo systemctl stop ogmios.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable ogmios.service && \
     sudo systemctl start ogmios.service
@@ -128,12 +128,12 @@ install_kupo() {
     chmod +x bin/kupo
     
     # Register ogmios as a service
+    sudo systemctl stop kupo.service
     if [ "$1" = "mainnet" ]; then
         sudo cp ~/cardano-setup/svc/kupo.service /etc/systemd/system/kupo.service
     elif [ "$1" = "preview" ]; then
         sudo cp ~/cardano-setup/svc/kupo.preview.service /etc/systemd/system/kupo.service
     fi
-    sudo systemctl stop kupo.service && \
     sudo systemctl daemon-reload && \
     sudo systemctl enable kupo.service && \
     sudo systemctl start kupo.service
