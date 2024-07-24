@@ -84,6 +84,7 @@ cd ogmios
 wget https://github.com/CardanoSolutions/ogmios/releases/download/v$OGMIOS_VERSION/ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 unzip ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
 rm ogmios-v$OGMIOS_VERSION-x86_64-linux.zip
+chmod +x bin/ogmios
 
 # Register cardano-db-sync as a service
 sudo cp ~/cardano-setup/svc/ogmios.service /etc/systemd/system/ogmios.service
@@ -100,6 +101,7 @@ cd kupo
 wget https://github.com/CardanoSolutions/kupo/releases/download/v2.8/kupo-2.8.0-amd64-Linux.tar.gz
 tar -xvf kupo-2.8.0-amd64-Linux.tar.gz
 rm kupo-2.8.0-amd64-Linux.tar.gz
+chmod +x bin/kupo
 
 # Register ogmios as a service
 sudo cp ~/cardano-setup/svc/kupo.service /etc/systemd/system/kupo.service
