@@ -138,3 +138,11 @@ install_kupo() {
     sudo systemctl enable kupo.service && \
     sudo systemctl start kupo.service
 }
+
+stop_services() {
+    sudo systemctl stop cardano-node.service
+    sudo systemctl stop cardano-db-sync.service
+    sudo systemctl stop kupo.service
+    sudo systemctl stop ogmios.service
+    sudo systemctl stop postgresql.service
+}
