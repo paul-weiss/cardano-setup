@@ -6,7 +6,7 @@
 echo "install nix"
 curl -L https://nixos.org/nix/install | sh -s -- --daemon
 nix develop # go get a coffee
-
+nix-env -iA nixpkgs.niv
 ```
 
 ### Links
