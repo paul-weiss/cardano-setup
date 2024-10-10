@@ -7,7 +7,13 @@ echo "install nix"
 curl -L https://nixos.org/nix/install | sh -s -- --daemon
 nix develop # go get a coffee
 nix-env -iA nixpkgs.niv
+niv init
+niv add input-output-hk/haskell.nix -n haskellNix
 ```
+
+### Updating version of haskellNix
+```niv update haskellNix```
+
 
 ### Links
 
