@@ -21,7 +21,7 @@ export ROOT_DIR="~/cardano-setup/"
 # prerequisites
 sudo apt-get install unzip
 
-stop_services
+stop_services $CARDANO_ENV
 install_cardano_node $CARDANO_ENV $CARDANO_VERSION $ROOT_DIR
 install_cardano_db_sync $CARDANO_ENV $DB_SYNC_VERSION $ROOT_DIR
 install_postgresql
