@@ -22,5 +22,5 @@ stop_services
 install_cardano_node $CARDANO_ENV $CARDANO_VERSION
 install_cardano_db_sync $CARDANO_ENV $DB_SYNC_VERSION
 install_postgresql
-install_ogmios $CARDANO_ENV $OGMIOS_VERSION
-install_kupo $CARDANO_ENV $KUPO_VERSION $KUPO_PATCH_VERSION
+#install_ogmios $CARDANO_ENV $OGMIOS_VERSION
+#install_kupo $CARDANO_ENV $KUPO_VERSION $KUPO_PATCH_VERSION
