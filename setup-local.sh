@@ -15,12 +15,15 @@ export KUPO_VERSION="2.9"
 export KUPO_PATCH_VERSION="0"
 export OGMIOS_VERSION="6.8.0"
 
+# change for different location 
+export ROOT_DIR="~/cardano-setup/"
+
 # prerequisites
 sudo apt-get install unzip
 
 stop_services
-install_cardano_node $CARDANO_ENV $CARDANO_VERSION
-install_cardano_db_sync $CARDANO_ENV $DB_SYNC_VERSION
+install_cardano_node $CARDANO_ENV $CARDANO_VERSION $ROOT_DIR
+install_cardano_db_sync $CARDANO_ENV $DB_SYNC_VERSION $ROOT_DIR
 install_postgresql
 #install_ogmios $CARDANO_ENV $OGMIOS_VERSION
 #install_kupo $CARDANO_ENV $KUPO_VERSION $KUPO_PATCH_VERSION
