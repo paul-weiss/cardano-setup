@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=ubuntu
 Type=simple
-WorkingDirectory=/usr/local/etc/cardano-node/private
+WorkingDirectory=/var/lib/cardano-node/private
 ExecStart=/usr/local/cardano-node/bin/cardano-node run \
   --topology /usr/local/etc/cardano-node/private/topology.json \
   --database-path /var/lib/cardano-node/db \
