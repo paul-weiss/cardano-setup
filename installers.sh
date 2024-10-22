@@ -7,13 +7,10 @@
 # $3: directory to install
 #====================================================================================================================================
 install_cardano_node() {
-    cd $3
-    #rm -Rf cardano
-    #rm -Rf $1
-    mkdir cardano
-    mkdir $1
-    mkdir $1/config
-    cd cardano
+    cd /usr/local
+    sudo rm /usr/local/cardano-node
+    mkdir /usr/local/cardano-node
+    cd /usr/local/cardano-node
     wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
     tar -xvf cardano-node-$2-linux.tar.gz
     rm cardano-node-$2-linux.tar.gz
@@ -31,7 +28,7 @@ install_cardano_node() {
     wget https://book.world.dev.cardano.org/environments/$1/conway-genesis.json
     
     # Register cardano-node as a service
-    sudo systemctl stop cardano-node.service
+    sudo systemctl stop cardano-node-$1.service
     if [ "$1" = "mainnet" ]; then
         sudo cp ~/cardano-setup/svc/cardano-node.service /etc/systemd/system/cardano-node.service
     elif [ "$1" = "preview" ]; then
@@ -138,13 +135,6 @@ install_kupo() {
     sudo systemctl daemon-reload && \
     sudo systemctl enable kupo.service && \
     sudo systemctl start kupo.service
-}
-
-# $1: root directory
-setup_directory() {
-    rm -Rf $1
-    mkdir $1
-    cp svc/ $1
 }
 
 stop_services() {
