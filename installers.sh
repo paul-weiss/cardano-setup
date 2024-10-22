@@ -4,15 +4,15 @@
 # CARDANO NODE
 # $1: environment (mainnet || preview)
 # $2: version
-# $3: directory to install
 #====================================================================================================================================
 install_cardano_node() {
 
+    sudo rm -Rf /usr/local/cardano-node
     sudo rm -Rf /usr/local/etc/cardano-node
+    sudo mkdir /usr/local/cardano-node
     sudo mkdir /usr/local/etc/cardano-node
     sudo cp -r svc/ /usr/local/etc/cardano-node
-    sudo rm -Rf /usr/local/cardano-node
-    sudo mkdir /usr/local/cardano-node
+    sudo mkdir /usr/local/etc/cardano-node/$1
 
     cd /usr/local/cardano-node
     sudo wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
@@ -20,7 +20,7 @@ install_cardano_node() {
     sudo rm cardano-node-$2-linux.tar.gz
     
     # download mainnet configs
-    cd ../$1/config
+    cd /usr/local/etc/cardano-node/$1
     sudo wget https://book.world.dev.cardano.org/environments/$1/config.json
     sudo wget https://book.world.dev.cardano.org/environments/$1/config-bp.json
     sudo wget https://book.world.dev.cardano.org/environments/$1/db-sync-config.json
