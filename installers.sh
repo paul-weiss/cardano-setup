@@ -8,8 +8,8 @@
 #====================================================================================================================================
 install_cardano_node() {
     cd $3
-    rm -Rf cardano
-    rm -Rf $1
+    #rm -Rf cardano
+    #rm -Rf $1
     mkdir cardano
     mkdir $1
     mkdir $1/config
@@ -140,10 +140,17 @@ install_kupo() {
     sudo systemctl start kupo.service
 }
 
+# $1: root directory
+setup_directory() {
+    rm -Rf $1
+    mkdir $1
+    cp svc/ $1
+}
+
 stop_services() {
-    sudo systemctl stop cardano-node.service
-    sudo systemctl stop cardano-db-sync.service
-    sudo systemctl stop kupo.service
-    sudo systemctl stop ogmios.service
-    sudo systemctl stop postgresql.service
+    sudo systemctl stop cardano-node-$1.service
+    sudo systemctl stop cardano-db-sync-$1.service
+    sudo systemctl stop kupo-$1.service
+    sudo systemctl stop ogmios-$1.service
+    sudo systemctl stop postgresql-$1.service
 }
