@@ -4,9 +4,10 @@
 # CARDANO NODE
 # $1: environment (mainnet || preview)
 # $2: version
+# $3: directory to install
 #====================================================================================================================================
 install_cardano_node() {
-    cd ~
+    cd $3
     rm -Rf cardano
     rm -Rf $1
     mkdir cardano
@@ -47,7 +48,7 @@ install_cardano_node() {
 # $2: version
 #====================================================================================================================================
 install_cardano_db_sync() {
-    cd ~
+    cd $3
     rm -Rf cardano-db-sync
     git clone https://github.com/IntersectMBO/cardano-db-sync
     # Checkout the version you will run:
