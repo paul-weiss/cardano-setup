@@ -7,36 +7,36 @@
 # $3: directory to install
 #====================================================================================================================================
 install_cardano_node() {
-    cd /usr/local
-    sudo rm /usr/local/cardano-node
-    mkdir /usr/local/cardano-node
+
+    sudo rm -Rf /usr/local/etc/cardano-node
+    sudo mkdir /usr/local/etc/cardano-node
+    sudo cp -r svc/ /usr/local/etc/cardano-node
+    sudo rm -Rf /usr/local/cardano-node
+    sudo mkdir /usr/local/cardano-node
+
     cd /usr/local/cardano-node
-    wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
-    tar -xvf cardano-node-$2-linux.tar.gz
-    rm cardano-node-$2-linux.tar.gz
+    sudo wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
+    sudo tar -xvf cardano-node-$2-linux.tar.gz
+    sudo rm cardano-node-$2-linux.tar.gz
     
     # download mainnet configs
     cd ../$1/config
-    wget https://book.world.dev.cardano.org/environments/$1/config.json
-    wget https://book.world.dev.cardano.org/environments/$1/config-bp.json
-    wget https://book.world.dev.cardano.org/environments/$1/db-sync-config.json
-    wget https://book.world.dev.cardano.org/environments/$1/submit-api-config.json
-    wget https://book.world.dev.cardano.org/environments/$1/topology.json
-    wget https://book.world.dev.cardano.org/environments/$1/byron-genesis.json
-    wget https://book.world.dev.cardano.org/environments/$1/shelley-genesis.json
-    wget https://book.world.dev.cardano.org/environments/$1/alonzo-genesis.json
-    wget https://book.world.dev.cardano.org/environments/$1/conway-genesis.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/config.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/config-bp.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/db-sync-config.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/submit-api-config.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/topology.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/byron-genesis.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/shelley-genesis.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/alonzo-genesis.json
+    sudo wget https://book.world.dev.cardano.org/environments/$1/conway-genesis.json
     
     # Register cardano-node as a service
     sudo systemctl stop cardano-node-$1.service
-    if [ "$1" = "mainnet" ]; then
-        sudo cp ~/cardano-setup/svc/cardano-node.service /etc/systemd/system/cardano-node.service
-    elif [ "$1" = "preview" ]; then
-        sudo cp ~/cardano-setup/svc/cardano-node.preview.service /etc/systemd/system/cardano-node.service
-    fi
+    sudo cp /usr/local/etc/cardano-node/svc/cardano-node-$1.service /etc/systemd/system/cardano-node-$1.service
     sudo systemctl daemon-reload && \
-    sudo systemctl enable cardano-node.service && \
-    sudo systemctl start cardano-node.service
+    sudo systemctl enable cardano-node-$1.service && \
+    sudo systemctl start cardano-node-$1.service
 }
 
 #====================================================================================================================================
