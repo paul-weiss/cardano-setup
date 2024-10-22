@@ -13,6 +13,7 @@ install_cardano_node() {
     sudo mkdir /usr/local/cardano-node
     sudo mkdir /usr/local/etc/cardano-node
     sudo mkdir /var/lib/cardano-node/db
+    sudo chmod 777 /var/lib/cardano-node/db
     sudo cp -r svc/ /usr/local/etc/cardano-node
     sudo mkdir /usr/local/etc/cardano-node/$1
 
