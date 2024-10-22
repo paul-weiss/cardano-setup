@@ -23,7 +23,7 @@ sudo apt-get install unzip
 
 stop_services $CARDANO_ENV
 install_cardano_node $CARDANO_ENV $CARDANO_VERSION $ROOT_DIR
-install_cardano_db_sync $CARDANO_ENV $DB_SYNC_VERSION $ROOT_DIR
-install_postgresql
+#install_cardano_db_sync $CARDANO_ENV $DB_SYNC_VERSION $ROOT_DIR
+#install_postgresql
 #install_ogmios $CARDANO_ENV $OGMIOS_VERSION
 #install_kupo $CARDANO_ENV $KUPO_VERSION $KUPO_PATCH_VERSION
