@@ -7,11 +7,11 @@ User=ubuntu
 Type=simple
 WorkingDirectory=/usr/local/etc/cardano-node/private
 ExecStart=/usr/local/cardano-node/bin/cardano-node run \
-  --topology /usr/local/etc/cardano-node/private/config/topology.json \
+  --topology /usr/local/etc/cardano-node/private/topology.json \
   --database-path /usr/local/etc/cardano-node/private/db \
   --socket-path /usr/local/etc/cardano-node/private/node.socket \
   --port 3434 \
-  --config /usr/local/etc/cardano-node/private/config/config.json
+  --config /usr/local/etc/cardano-node/private/config.json
 Restart=on-failure
 
 [Install]
