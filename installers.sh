@@ -6,7 +6,7 @@
 # $2: version
 #====================================================================================================================================
 install_cardano_node() {
-
+    sudo adduser cardano --system
     sudo rm -Rf /usr/local/cardano-node
     sudo rm -Rf /usr/local/etc/cardano-node
     sudo rm -Rf /var/lib/cardano-node
@@ -18,7 +18,6 @@ install_cardano_node() {
     sudo chmod -R 777 /var/lib/cardano-node
     sudo cp -r svc/ /usr/local/etc/cardano-node
     sudo mkdir /usr/local/etc/cardano-node/$1
-
     cd /usr/local/cardano-node
     sudo wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
     sudo tar -xvf cardano-node-$2-linux.tar.gz
@@ -142,10 +141,3 @@ install_kupo() {
     sudo systemctl start kupo.service
 }
 
-stop_services() {
-    sudo systemctl stop cardano-node-$1.service
-    sudo systemctl stop cardano-db-sync-$1.service
-    sudo systemctl stop kupo-$1.service
-    sudo systemctl stop ogmios-$1.service
-    sudo systemctl stop postgresql-$1.service
-}
