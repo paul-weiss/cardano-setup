@@ -15,6 +15,7 @@ install_cardano_node() {
     tar -xvf cardano-node-$2-linux.tar.gz
     rm cardano-node-$2-linux.tar.gz
     cp ../svc/start_$1.sh .
+    cp ../svc/tip_$1.sh .
     
     # download mainnet configs
     cd env/$1
