@@ -6,16 +6,17 @@
 # $2: version
 #====================================================================================================================================
 install_cardano_node() {
-    rm -Rf bin/cardano
-    mkdir bin/cardano-node/{db,$1}
-    cp -r svc/ bin/cardano-node
-    cd bin/cardano-node
+    mkdir bin
+    mkdir bin/db
+    mkdir bin/env
+    mkdir bin/env/$1
+    cd bin
     wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
     tar -xvf cardano-node-$2-linux.tar.gz
     rm cardano-node-$2-linux.tar.gz
     
     # download mainnet configs
-    cd bin/cardano-node/$1
+    cd env/$1
     wget https://book.world.dev.cardano.org/environments/$1/config.json
     wget https://book.world.dev.cardano.org/environments/$1/config-bp.json
     wget https://book.world.dev.cardano.org/environments/$1/db-sync-config.json
