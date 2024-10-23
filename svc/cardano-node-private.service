@@ -3,7 +3,7 @@ Description=Cardano Node Private
 After=network.target
 
 [Service]
-User=ubuntu
+User=cardano
 Type=simple
 WorkingDirectory=/var/lib/cardano-node/private
 ExecStart=/usr/local/cardano-node/bin/cardano-node run \
