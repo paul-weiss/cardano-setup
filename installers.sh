@@ -14,6 +14,7 @@ install_cardano_node() {
     wget https://github.com/IntersectMBO/cardano-node/releases/download/$2/cardano-node-$2-linux.tar.gz
     tar -xvf cardano-node-$2-linux.tar.gz
     rm cardano-node-$2-linux.tar.gz
+    cp ../svc/start_$1.sh .
     
     # download mainnet configs
     cd env/$1
